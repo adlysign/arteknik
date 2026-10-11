@@ -1,7 +1,20 @@
+
 import React, { useState } from 'react';
-import { Phone, MessageCircle, MapPin, Menu, X, Lock, Calculator, Globe } from 'lucide-react';
+import {
+  Phone,
+  MessageCircle,
+  MapPin,
+  Menu,
+  X,
+  Lock,
+  Calculator,
+  Globe,
+} from 'lucide-react';
 import { CompanyInfo } from '../types';
-import { buildWhatsAppUrl, getQuickConsultationMessage } from '../utils/whatsapp';
+import {
+  buildWhatsAppUrl,
+  getQuickConsultationMessage,
+} from '../utils/whatsapp';
 
 interface NavbarProps {
   company: CompanyInfo;
@@ -9,7 +22,11 @@ interface NavbarProps {
   onOpenCalculator: () => void;
 }
 
-export const Navbar: React.FC<NavbarProps> = ({ company, onOpenCms, onOpenCalculator }) => {
+export const Navbar: React.FC<NavbarProps> = ({
+  company,
+  onOpenCms,
+  onOpenCalculator,
+}) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const navLinks = [
@@ -27,23 +44,28 @@ export const Navbar: React.FC<NavbarProps> = ({ company, onOpenCms, onOpenCalcul
     setMobileMenuOpen(false);
   };
 
-  const waUrl = buildWhatsAppUrl(getQuickConsultationMessage('Rolling Door & Folding Gate'), company.whatsapp);
+  const waUrl = buildWhatsAppUrl(
+    getQuickConsultationMessage('Rolling Door & Folding Gate'),
+    company.whatsapp
+  );
 
   return (
     <header className="sticky top-0 z-40 bg-white shadow-sm border-b border-slate-200">
-      {/* Top Bar for Desktop */}
+      {/* Top Bar */}
       <div className="bg-slate-900 text-slate-300 text-xs py-2 px-4 border-b border-slate-800">
         <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2">
           <div className="flex flex-wrap items-center gap-4 sm:gap-6">
             <span className="flex items-center gap-1.5 text-amber-400 font-medium">
-              <Globe className="w-3.5 h-3.5 text-amber-400" />
+              <Globe className="w-3.5 h-3.5" />
               Layanan Siap Kirim & Pasang ke Seluruh Nusantara Indonesia
             </span>
+
             <span className="hidden lg:flex items-center gap-1.5 text-slate-300">
               <MapPin className="w-3.5 h-3.5 text-amber-400" />
               Workshop Utama: Ds. Tumbrep Bandar, Batang, Jateng
             </span>
           </div>
+
           <div className="flex items-center gap-4">
             <a
               href={`tel:${company.phone}`}
@@ -52,6 +74,7 @@ export const Navbar: React.FC<NavbarProps> = ({ company, onOpenCms, onOpenCalcul
               <Phone className="w-3.5 h-3.5 text-amber-400" />
               <span>{company.phone}</span>
             </a>
+
             <button
               onClick={onOpenCms}
               className="flex items-center gap-1 text-slate-400 hover:text-white transition-colors text-[11px] bg-slate-800 px-2 py-0.5 rounded border border-slate-700 hover:border-slate-500"
@@ -65,27 +88,32 @@ export const Navbar: React.FC<NavbarProps> = ({ company, onOpenCms, onOpenCalcul
       </div>
 
       {/* Main Navigation */}
-      
-{/* Logo Brand */}
-<a href="#beranda" className="flex items-center gap-3 group">
-  <img
-    src="/logo.png"
-    alt="Logo AR Teknik Rolling Door"
-    className="h-12 w-auto max-w-[140px] object-contain transition-transform group-hover:scale-105"
-  />
-  <div className="flex flex-col">
-    <span className="font-extrabold text-xl sm:text-2xl tracking-tight text-slate-900 leading-none">
-      AR TEKNIK
-    </span>
-    <span className="text-[11px] sm:text-xs font-semibold tracking-wider text-amber-600 uppercase mt-0.5">
-      Rolling Door • Folding Gate • Kaca
-    </span>
-  </div>
-</a>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between gap-4 py-3">
+          {/* Logo Brand */}
+          <a
+            href="#beranda"
+            onClick={handleLinkClick}
+            className="flex items-center gap-3 group shrink-0"
+          >
+            <img
+              src="/logo.png"
+              alt="Logo AR Teknik Rolling Door"
+              className="h-12 w-auto max-w-[120px] object-contain transition-transform group-hover:scale-105"
+            />
 
+            <div className="flex flex-col">
+              <span className="font-extrabold text-lg sm:text-2xl tracking-tight text-slate-900 leading-none">
+                AR TEKNIK
+              </span>
+              <span className="text-[9px] sm:text-xs font-semibold tracking-wider text-amber-600 uppercase mt-1">
+                Rolling Door • Folding Gate • Kaca
+              </span>
+            </div>
+          </a>
 
-          {/* Desktop Nav Items */}
-          <nav className="hidden lg:flex items-center gap-5 xl:gap-6 text-sm font-medium text-slate-700">
+          {/* Desktop Navigation */}
+          <nav className="hidden lg:flex items-center gap-4 xl:gap-6 text-sm font-medium text-slate-700">
             {navLinks.map((link) => (
               <a
                 key={link.href}
@@ -97,7 +125,7 @@ export const Navbar: React.FC<NavbarProps> = ({ company, onOpenCms, onOpenCalcul
             ))}
           </nav>
 
-          {/* Action Buttons */}
+          {/* Desktop Action Buttons */}
           <div className="hidden sm:flex items-center gap-3">
             <button
               onClick={onOpenCalculator}
@@ -106,6 +134,7 @@ export const Navbar: React.FC<NavbarProps> = ({ company, onOpenCms, onOpenCalcul
               <Calculator className="w-4 h-4 text-amber-600" />
               <span>Hitung Biaya</span>
             </button>
+
             <a
               href={waUrl}
               target="_blank"
@@ -117,14 +146,19 @@ export const Navbar: React.FC<NavbarProps> = ({ company, onOpenCms, onOpenCalcul
             </a>
           </div>
 
-          {/* Mobile Hamburger Button */}
+          {/* Mobile Hamburger */}
           <div className="flex lg:hidden items-center gap-2">
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className="p-2 rounded-lg text-slate-700 hover:bg-slate-100 focus:outline-none"
               aria-label="Menu"
+              aria-expanded={mobileMenuOpen}
             >
-              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              {mobileMenuOpen ? (
+                <X className="w-6 h-6" />
+              ) : (
+                <Menu className="w-6 h-6" />
+              )}
             </button>
           </div>
         </div>
@@ -144,6 +178,7 @@ export const Navbar: React.FC<NavbarProps> = ({ company, onOpenCms, onOpenCalcul
                 {link.label}
               </a>
             ))}
+
             <div className="pt-3 border-t border-slate-100 flex flex-col gap-2.5">
               <button
                 onClick={() => {
@@ -155,6 +190,7 @@ export const Navbar: React.FC<NavbarProps> = ({ company, onOpenCms, onOpenCalcul
                 <Calculator className="w-4 h-4 text-amber-600" />
                 Simulasi Hitung Biaya Otomatis
               </button>
+
               <a
                 href={waUrl}
                 target="_blank"
@@ -165,6 +201,7 @@ export const Navbar: React.FC<NavbarProps> = ({ company, onOpenCms, onOpenCalcul
                 <MessageCircle className="w-5 h-5 fill-white" />
                 Konsultasi WhatsApp Sekarang
               </a>
+
               <button
                 onClick={() => {
                   setMobileMenuOpen(false);
