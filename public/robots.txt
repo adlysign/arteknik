@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://arteknikrollingdoor.id/sitemap.xml
