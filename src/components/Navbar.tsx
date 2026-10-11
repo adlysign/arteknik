@@ -65,22 +65,24 @@ export const Navbar: React.FC<NavbarProps> = ({ company, onOpenCms, onOpenCalcul
       </div>
 
       {/* Main Navigation */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
-          {/* Logo Brand */}
-          <a href="#beranda" className="flex items-center gap-3 group">
-            <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-amber-500 to-amber-700 flex items-center justify-center text-slate-950 font-black text-2xl shadow-md shadow-amber-500/20 group-hover:scale-105 transition-transform border border-amber-400">
-              AR
-            </div>
-            <div className="flex flex-col">
-              <span className="font-extrabold text-xl sm:text-2xl tracking-tight text-slate-900 leading-none">
-                AR TEKNIK
-              </span>
-              <span className="text-[11px] sm:text-xs font-semibold tracking-wider text-amber-600 uppercase mt-0.5">
-                Rolling Door • Folding Gate • Kaca
-              </span>
-            </div>
-          </a>
+      
+{/* Logo Brand */}
+<a href="#beranda" className="flex items-center gap-3 group">
+  <img
+    src="/logo.png"
+    alt="Logo AR Teknik Rolling Door"
+    className="h-12 w-auto max-w-[140px] object-contain transition-transform group-hover:scale-105"
+  />
+  <div className="flex flex-col">
+    <span className="font-extrabold text-xl sm:text-2xl tracking-tight text-slate-900 leading-none">
+      AR TEKNIK
+    </span>
+    <span className="text-[11px] sm:text-xs font-semibold tracking-wider text-amber-600 uppercase mt-0.5">
+      Rolling Door • Folding Gate • Kaca
+    </span>
+  </div>
+</a>
+
 
           {/* Desktop Nav Items */}
           <nav className="hidden lg:flex items-center gap-5 xl:gap-6 text-sm font-medium text-slate-700">
